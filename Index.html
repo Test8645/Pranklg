@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Software Update</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+            margin: 0;
+        }
+
+        .update-box {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            text-align: center;
+            width: 90%;
+            max-width: 400px;
+        }
+
+        .update-title {
+            font-size: 1.5em;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .progress-bar {
+            width: 100%;
+            background-color: #ddd;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 15px;
+        }
+
+        .progress {
+            background-color: #4caf50;
+            height: 20px;
+            width: 0;
+            transition: width 0.3s;
+        }
+
+        .percentage {
+            font-size: 1.2em;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .loading-text {
+            font-size: 1.1em;
+            color: #555;
+        }
+
+        .start-button {
+            padding: 10px 20px;
+            font-size: 1.2em;
+            color: white;
+            background-color: #4caf50;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+<div class="update-box">
+    <div class="update-title">Software Update</div>
+    <div class="progress-bar">
+        <div class="progress" id="progress"></div>
+    </div>
+    <div class="percentage" id="percentage">0%</div>
+    <div class="loading-text">Click the button to start the update.</div>
+    <button class="start-button" id="startButton">Start Update</button>
+</div>
+
+<!-- Add the audio element -->
+<audio id="completeSound" src="Use this sound in public_ _sound _funny _prank _fyp(MP3).mp3"></audio>
+
+<script>
+    let progressElement = document.getElementById('progress');
+    let percentageElement = document.getElementById('percentage');
+    let progress = 0;
+
+    function fakeUpdate() {
+        if (progress < 100) {
+            progress += Math.random() * 5;
+            progressElement.style.width = progress + '%';
+            percentageElement.innerText = Math.floor(progress) + '%';
+            setTimeout(fakeUpdate, 300);
+        } else {
+            percentageElement.innerText = '100%';
+            document.querySelector('.loading-text').innerText = 'Update complete!';
+            
+            // Play the sound when update is complete
+            document.getElementById('completeSound').play();
+        }
+    }
+
+    // Start the update when the button is clicked
+    document.getElementById('startButton').addEventListener('click', function() {
+        document.querySelector('.loading-text').innerText = 'Updating... Please do not turn off your phone.';
+        document.getElementById('startButton').style.display = 'none'; // Hide the button after starting
+        setTimeout(fakeUpdate, 1000);
+    });
+</script>
+
+</body>
+</html>
+    
